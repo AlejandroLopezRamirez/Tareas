@@ -1,54 +1,17 @@
-'''
-Escribir en Python una función completar() sin parámetros que lea un
-archivo de texto llamado «datos.txt» con un texto similar a éste:
+# 2. La función potencia tiene la siguiente especificación:
 
-1249378
-*********
-32584*9
+#         | Pre:    𝑏 ≥ 0
+# 𝑓 (𝑛) = {         potencia(𝑎:int, 𝑏:int) -> int
+#         | Post:   potencia(𝑎, 𝑏) = 𝑎ᵇ
 
-En cada línea del texto habrá una cadena de 9 caracteres formada por
-dígitos y asteriscos, de forma que los dígitos no se pueden repetir
-y puede haber muchos asteriscos (siempre que no se sobrepase la
-longitud máxima de 9 caracteres en la línea).
+# a) Implementar la función de forma no recursiva.
 
-La función deberá modificar el contenido del archivo, sustituyendo
-los asteriscos por los dígitos que falten en esa línea, completando
-de menor a mayor, de la siguiente forma:
+potencia = pow
 
-124593678
-123456789
-132658479
+# b) Implementar la función de forma recursiva.
 
-De forma que:
-- En la primera línea se han sustituido los asteriscos por 5 y 6
-(en ese orden)
-- En la segunda línea se han sustituido por todos los dígitos del
-1 al 9 (en ese orden)
-- En la tercera línea se han sustituido por 1, 6 y 7 (en ese orden).
+rec_potencia = lambda a, b: 1 if b == 0 else a * rec_potencia(a, (b - 1))
 
-Observación: Antes de cada test, se llama a completar() y luego se
-almacena el contenido del archivo «datos.txt» en la lista lineas
-(en cada elemento de la lista se guarda una línea del archivo),
-eliminando los saltos de línea finales de cada línea.
-'''
-
-def completar():
-    '''
-    Que haga lo de arriba
-    '''
-    linea = ' '
-    f = open('datos.txt', 'r+' )
-    while linea !='':
-        linea = f.readline()
-        i = 1
-        while '*' in linea:
-            if str(i) in linea:
-                i += 1
-            else:
-                linea = linea.replace('*', str(i), 1)
-                i += 1
-        linea = linea + '\n'
-        f.close()
-        w = open('datos.txt', 'w')
-        w.write(linea)
-        w.close()
+# fr (2,3) = 2 * fr(2, 2)
+# fr (2,3) = 2 * 2 fr(2, 1)
+# fr (2,3) = 2 * 2 * 2 * 1 --> 8
