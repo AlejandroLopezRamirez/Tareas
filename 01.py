@@ -1,16 +1,11 @@
-'''
-Escribir en Python una función pura llamada intercambiar(persona)
-que reciba una cadena con el nombre (que puede ser compuesto) y los
-apellidos (que también pueden ser compuestos) de una persona,
-en ese orden y separados por exactamente dos espacios en blanco,
-y los devuelva en una cadena poniendo primero los apellidos y
-después el nombre, separados por «,␣» (una coma y un espacio).
+#1. Dada la siguiente función matemática:
 
-Si la cadena recibida no tiene la forma requerida,
-debe devolverla tal cual sin modificar.
+#         | 0               si 𝑛 =0
+# 𝑓 (𝑛) = {
+#         | 1 +2 ·𝑓 (𝑛 −1)  si 𝑛 >0
 
-En la cadena recibida no puede haber números ni otros
-signos de puntuación salvo los espacios en blanco.
-'''
+# calcular el valor de 𝑓 (3)
 
-intercambiar = lambda s: s.split('  ')[1:][0] + ', ' + s.split('  ')[0] if s.find('  ') != -1 else s
+f = lambda n: 0 if n == 0 else 1 + 2 * f(n - 1)
+
+#f(3) = 1 + 2 * 1 + 2 * 1 + 2 --> 7
